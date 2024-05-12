@@ -1,0 +1,21 @@
+# weatherapp-deploy.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: weatherapp-deployment
+spec:
+  replicas: 1 # You can adjust the number of replicas as needed
+  selector:
+    matchLabels:
+      app: weatherapp
+  template:
+    metadata:
+      labels:
+        app: weatherapp
+    spec:
+      containers:
+        - name: weatherapp
+          image: pratimagautam977/reactweather # Replace with the actual image tag
+          ports:
+            - containerPort: 80 # Replace with the port your weather app listens on
